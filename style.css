@@ -1,0 +1,33 @@
+.tags-input{
+    border:1px solid #333;
+    display:inline-block;
+}
+.tags-input .tag{
+    padding: 0.5em 0.75em;
+    display: inline-block;
+    background-color: #ddd;
+    margin: 0.25em 0.1em;
+    font-size: 85%;
+    transition: all 0.1s linear;
+    cursor:pointer;
+}
+.tags-input .tag:hover{
+    background-color:#3af;
+    color: white;
+}
+.tags-input .tag .close::after{
+    content: 'x';
+    font-weight: bold;
+    font-family: sans-serif;
+    display: inline-block;
+    transform: scale(1.2);
+    margin-left: .75em;
+}
+.tags-input .tag .close:hover::after{
+    color:red;
+}
+.tags-input .main-input{
+    padding:1em;
+    border: 0;
+    outline:0;
+}
