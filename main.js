@@ -20,10 +20,20 @@
                 let filteredTag = filterTag(t);
                 if(filteredTag.length > 0){
                     addTag(filteredTag); //If the length of the filtered element is greater than 0, add that element as tag
+                    mainInput.value = '';
                 }
             });
         }
     });
+
+// remove tag in backspace
+    mainInput.addEventListener('keydown',function(e){
+        console.log(e.which);
+        console.log(tags.length);
+        let keyCode =e.which;
+        if(keyCode === 8 && mainInput.value.length === 0 && tags.length > 0){ removeTag(tags.length - 1)}
+    });
+
 
     el.appendChild(mainInput);
     el.appendChild(hiddenInput);
@@ -62,7 +72,13 @@
         el.removeChild(tag.elememt);
         refreshTag();
     }
-    function refreshTag(){}
+    function refreshTag(){
+        let tagList = [];
+        tags.forEach(function(t){
+            tagList.push(t.text);
+        });
+        hiddenInput.value = tagList.join(',');
+    }
     function filterTag(tag){
         let filtered = tag.replace(/^\w -/g,'').trim().replace(/\W+/g,'-');
         return filtered;
